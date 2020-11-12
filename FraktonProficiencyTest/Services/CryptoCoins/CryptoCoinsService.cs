@@ -23,5 +23,24 @@ namespace FraktonProficiencyTest.Services.CryptoCoins
 
             return result;
         }
+
+
+        public CryptoCoinsModel GetAllFavourites(string ids)
+        {
+            var result = new CryptoCoinsModel(); ;
+
+            using (var client = new HttpClient())
+            {
+                string url = string.Format("https://api.coincap.io/v2/assets?ids="+ids);
+                client.BaseAddress = new Uri(url);
+
+                HttpResponseMessage responseMessage = client.GetAsync(url).Result;
+                if (responseMessage.IsSuccessStatusCode)
+                    result = JsonConvert.DeserializeObject<CryptoCoinsModel>(responseMessage.Content.ReadAsStringAsync().Result);
+            }
+
+            return result;
+
+        }
     }
 }

@@ -46,24 +46,15 @@ namespace FraktonProficiencyTest.Services.UserCoinsFavourites
 
         }
 
-        public IList<UserCoinsFavouriteModel> GetAllFavouriteByUserId(int userId)
+        public CryptoCoinsModel GetAllFavouriteByUserId(int userId)
         {
-            var cryptoCoins = _cryptoCoinsService.GetAll();
-
             var favoriteCoins = _context.UserCoinsFavourites
                                         .Where(x => x.UserId == userId)
                                         .Select(x => x.CoinId).ToList();
 
-            return cryptoCoins.Data.Where(x => favoriteCoins.Contains(x.Id))
-                                   .Select(t => new UserCoinsFavouriteModel()
-                                   {
-                                       CoinId = t.Id,
-                                       Name = t.Name,
-                                       MaxSupply = t.MaxSupply,
-                                       Rank = t.Rank,
-                                       Supply = t.Supply,
-                                       Symbol = t.Symbol
-                                   }).ToList();
+            var ids = string.Join(",",favoriteCoins);
+
+            return _cryptoCoinsService.GetAllFavourites(ids);
         }
     }
 }

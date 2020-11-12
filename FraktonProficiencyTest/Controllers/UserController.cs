@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using FraktonProficiencyTest.Data.Entities;
 using FraktonProficiencyTest.Helpers;
 using FraktonProficiencyTest.Models;
 using FraktonProficiencyTest.Services.Token;
@@ -17,7 +16,6 @@ namespace FraktonProficiencyTest.Controllers
         #region Properties
         private IUserService _userService;
         private ITokenService _tokenService;
-        private IMapper _mapper;
         private readonly JwtSettings _jwtSettings;
         #endregion
 
@@ -30,7 +28,6 @@ namespace FraktonProficiencyTest.Controllers
                  )
         {
             _userService = userService;
-            _mapper = mapper;
             _jwtSettings = jwtSettings.Value;
             _tokenService = tokenService;
 
@@ -66,7 +63,7 @@ namespace FraktonProficiencyTest.Controllers
             {
                 _userService.Create(model, model.Password);
 
-                return Ok(new { message="User registered successfully"});
+                return Ok(new { message = "User registered successfully" });
             }
             catch (AppException ex)
             {
@@ -84,6 +81,7 @@ namespace FraktonProficiencyTest.Controllers
 
             string accessToken = tokenApiModel.AccessToken;
             string refreshToken = tokenApiModel.RefreshToken;
+
             var principal = _tokenService.GetPrincipalFromExpiredToken(accessToken);
             var userId = principal.Identity.Name;
             var user = _userService.GetById(int.Parse(userId));

@@ -34,8 +34,8 @@ namespace FraktonProficiencyTest.Controllers
             return Ok(result);
         }
 
-        [HttpGet("getAllFavouriteByUserId")]
-        public IActionResult GetAllFavouriteByUserId()
+        [HttpGet("getAllFavourite")]
+        public IActionResult GetAllFavourite()
         {
             var userId = HttpContext.GetUserId();
 

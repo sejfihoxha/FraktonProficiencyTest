@@ -5,5 +5,6 @@ namespace FraktonProficiencyTest.Services.CryptoCoins
     public interface ICryptoCoinsService:IService
     {
         CryptoCoinsModel GetAll();
+        CryptoCoinsModel GetAllFavourites(string ids);
     }
 }

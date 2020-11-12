@@ -7,7 +7,6 @@ namespace FraktonProficiencyTest.Models
 {
     public class UserCoinsFavouriteCreateModel
     {
-        public int UserId { get; set; }
         public string CoinId { get; set; }
     }
 }
