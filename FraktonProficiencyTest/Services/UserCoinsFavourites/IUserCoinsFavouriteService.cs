@@ -1,6 +1,5 @@
 ﻿using FraktonProficiencyTest.Data.Entities;
 using FraktonProficiencyTest.Models;
-using System.Collections.Generic;
 
 namespace FraktonProficiencyTest.Services.UserCoinsFavourites
 {

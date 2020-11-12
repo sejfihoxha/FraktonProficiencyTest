@@ -3,7 +3,6 @@ using FraktonProficiencyTest.Data.Entities;
 using FraktonProficiencyTest.Helpers;
 using FraktonProficiencyTest.Models;
 using FraktonProficiencyTest.Services.CryptoCoins;
-using System.Collections.Generic;
 using System.Linq;
 
 
